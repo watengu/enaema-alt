@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ENAEMA ― 猫巫女と続ける美容タスク（別デザイン雛形）</title>
-<meta name="description" content="エナエマ別バージョンの雛形サイト。猫巫女のプロフィール誌面から入る、美容タスクのもう一つの入口。">
+<meta name="description" content="エナエマ別バージョンの雛形サイト。猫巫女のプロフィールから1タップで本番へ入る、もう一つの入口。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0e0b0d;
@@ -22,161 +22,139 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
-  .page{max-width:520px;margin:0 auto;padding:0 20px 64px}
+  .page{max-width:520px;margin:0 auto;padding:0 20px 110px}
+
+  /* thin brand band (skin only, not a masthead hero) */
+  .brand-band{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0 10px;border-bottom:1px solid var(--line)}
+  .brand-band .logo{font-family:var(--serif);font-weight:900;font-size:21px;letter-spacing:.14em}
+  .brand-band .cat{font-size:9.5px;letter-spacing:.3em;color:var(--ink-dim)}
 
   /* ticker */
-  .ticker{border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:9px 0}
-  .ticker-track{display:inline-block;animation:tick 36s linear infinite;font-size:11px;letter-spacing:.18em;color:var(--ink-dim)}
+  .ticker{border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:7px 0}
+  .ticker-track{display:inline-block;animation:tick 36s linear infinite;font-size:10.5px;letter-spacing:.16em;color:var(--ink-dim)}
   .ticker-track b{color:var(--accent);font-weight:600}
   @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* masthead */
-  .cat-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:26px;font-size:10px;letter-spacing:.34em;color:var(--ink-dim)}
-  .masthead{font-family:var(--serif);font-weight:900;font-size:clamp(64px,19vw,104px);line-height:.95;letter-spacing:.01em;text-align:center;margin:6px 0 2px}
-  .tagline{font-family:var(--serif);font-style:italic;text-align:center;font-size:17px;color:var(--ink)}
-  .tagline-jp{text-align:center;font-size:12.5px;color:var(--ink-dim);margin-top:8px;letter-spacing:.08em}
-  .rule{height:1px;background:var(--ink);opacity:.85;margin:20px 0 0}
-  .rule-thin{height:1px;background:var(--line);margin:4px 0 0}
+  /* ===== FV: lit.link grammar (icon -> name -> one-liner -> first action -> evidence) ===== */
+  .fv{text-align:center;padding:26px 0 6px}
+  .fv .icon{width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--accent)}
+  .fv h1{font-size:24px;font-weight:700;letter-spacing:.1em;margin-top:14px}
+  .fv .title{font-size:11px;letter-spacing:.3em;color:var(--ink-dim);margin-top:5px}
+  .fv .oneline{font-size:13.5px;line-height:1.85;margin-top:13px}
+  .fv .oneline .sub{display:block;font-size:12px;color:var(--ink-dim);margin-top:2px}
+  .cta-main{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;background:var(--accent);color:#221016;font-weight:700;font-size:16px;letter-spacing:.05em;min-height:58px;padding:14px;border-radius:3px;text-decoration:none}
+  .cta-note{font-size:11px;color:var(--ink-dim);margin-top:8px;letter-spacing:.05em}
 
-  /* hero */
-  .hero{margin-top:22px;position:relative}
-  .hero img{width:100%;display:block;border-radius:2px}
-  .hero .vol{position:absolute;top:10px;right:12px;font-size:10px;letter-spacing:.28em;color:var(--ink);background:rgba(14,11,13,.55);padding:5px 8px}
-  .hero-caption{display:flex;justify-content:space-between;font-size:10.5px;color:var(--ink-dim);letter-spacing:.14em;margin-top:8px}
+  /* evidence directly under the first action */
+  .evidence{margin-top:18px;text-align:left;background:var(--bg2);border:1px solid var(--line);padding:13px 14px 5px}
+  .evidence .eh{display:flex;justify-content:space-between;align-items:baseline}
+  .evidence .eh .when{font-size:10.5px;letter-spacing:.22em;color:var(--accent)}
+  .evidence .eh .more{font-size:10.5px;color:var(--ink-dim)}
+  .evidence ul{list-style:none}
+  .evidence li{display:flex;align-items:center;gap:11px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .evidence li:last-child{border-bottom:none}
+  .evidence img{width:38px;height:38px;object-fit:cover;border-radius:2px}
+  .evidence .tn{font-size:14px}
+  .evidence .no{font-family:var(--serif);font-size:12px;color:var(--accent);width:20px}
 
-  /* profile (pattern B core) */
-  .profile{display:flex;align-items:center;gap:14px;margin-top:30px}
-  .profile .icon{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;border:1px solid var(--accent)}
-  .profile .who .name{font-size:17px;font-weight:700;letter-spacing:.06em}
-  .profile .who .role{font-size:12px;color:var(--ink-dim);margin-top:3px;line-height:1.6}
-  .cta-main{display:block;margin-top:20px;background:var(--accent);color:#221016;text-align:center;font-weight:700;font-size:15.5px;letter-spacing:.06em;padding:17px 12px;border-radius:2px;text-decoration:none}
-  .cta-note{text-align:center;font-size:11px;color:var(--ink-dim);margin-top:9px;letter-spacing:.06em}
+  /* link stack: full-width tap rows */
+  section{margin-top:46px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ink);padding-bottom:9px}
+  .sec-head .no{font-family:var(--serif);color:var(--accent);font-size:14px}
+  .sec-head h2{font-family:var(--serif);font-size:21px;letter-spacing:.1em;font-weight:700}
+  .sec-head .en{margin-left:auto;font-size:9.5px;letter-spacing:.3em;color:var(--ink-dim)}
+  .sec-lead{font-size:12.5px;line-height:1.9;color:var(--ink-dim);margin-top:12px}
 
-  /* sections */
-  section{margin-top:52px}
-  .sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ink);padding-bottom:10px}
-  .sec-head .no{font-family:var(--serif);color:var(--accent);font-size:15px}
-  .sec-head h2{font-family:var(--serif);font-size:23px;letter-spacing:.1em;font-weight:700}
-  .sec-head .en{margin-left:auto;font-size:10px;letter-spacing:.3em;color:var(--ink-dim)}
-  .sec-lead{font-size:13px;line-height:1.9;color:var(--ink-dim);margin-top:14px}
-
-  /* now slot */
-  .now-box{margin-top:16px;background:var(--bg2);border:1px solid var(--line);padding:18px 16px 8px}
-  .now-box .when{font-size:11px;letter-spacing:.24em;color:var(--accent)}
-  .now-box .title{font-size:16px;font-weight:700;margin:6px 0 12px;letter-spacing:.05em}
-
-  /* task article list (not cards) */
-  ul.tasks{list-style:none}
-  ul.tasks li{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid var(--line)}
-  ul.tasks li:last-child{border-bottom:none}
-  ul.tasks .num{font-family:var(--serif);font-size:13px;color:var(--accent);width:22px;flex:none}
-  ul.tasks img{width:46px;height:46px;object-fit:cover;border-radius:2px;flex:none}
-  ul.tasks .tname{font-size:14.5px;letter-spacing:.04em}
-  ul.tasks .lock{margin-left:auto;font-size:10px;color:var(--ink-dim);border:1px solid var(--line);padding:3px 7px;letter-spacing:.1em;flex:none}
-  ul.tasks li.locked .tname{color:var(--ink-dim)}
-
-  /* contents index */
-  .index-list{margin-top:6px}
-  .index-list a{display:flex;align-items:baseline;gap:14px;padding:16px 2px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}
-  .index-list .no{font-family:var(--serif);color:var(--accent);font-size:15px}
-  .index-list .ttl{font-size:16px;font-weight:700;letter-spacing:.08em}
-  .index-list .dsc{margin-left:auto;font-size:11.5px;color:var(--ink-dim);text-align:right;line-height:1.7}
+  .stack{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+  a.row{display:flex;align-items:center;gap:13px;min-height:60px;padding:10px 14px;background:var(--bg2);border:1px solid var(--line);border-radius:3px;color:var(--ink);text-decoration:none}
+  a.row .num{font-family:var(--serif);font-size:13px;color:var(--accent);width:22px;flex:none}
+  a.row img{width:44px;height:44px;object-fit:cover;border-radius:2px;flex:none}
+  a.row .main{flex:1;min-width:0}
+  a.row .main .t{display:block;font-size:15px;font-weight:700;letter-spacing:.04em}
+  a.row .main .d{display:block;font-size:11.5px;color:var(--ink-dim);margin-top:2px;line-height:1.6}
+  a.row .chev{color:var(--ink-dim);font-size:17px;flex:none}
+  a.row .lock{font-size:10px;color:var(--ink-dim);border:1px solid var(--line);padding:3px 7px;letter-spacing:.08em;flex:none}
+  a.row.locked .main .t{color:var(--ink-dim)}
 
   /* type chips */
-  .chip-group{margin-top:18px}
+  .chip-group{margin-top:16px}
   .chip-group .glabel{font-size:11px;letter-spacing:.26em;color:var(--ink-dim);margin-bottom:9px}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{font-family:var(--sans);font-size:13px;color:var(--ink);background:transparent;border:1px solid var(--line);padding:9px 14px;border-radius:999px;cursor:pointer;letter-spacing:.05em}
+  .chip{font-family:var(--sans);font-size:13.5px;color:var(--ink);background:transparent;border:1px solid var(--line);min-height:44px;padding:9px 16px;border-radius:999px;cursor:pointer;letter-spacing:.05em}
   .chip.on{border-color:var(--accent);color:var(--accent)}
 
   /* social sample */
-  .social-strip{margin-top:16px;position:relative;height:118px;background:var(--bg2);border:1px solid var(--line);overflow:hidden}
-  .bubble{position:absolute;font-size:12px;background:rgba(246,241,234,.09);border:1px solid var(--line);padding:7px 11px;border-radius:999px;color:var(--ink);opacity:.85}
+  .social-strip{margin-top:14px;position:relative;height:118px;background:var(--bg2);border:1px solid var(--line);overflow:hidden}
+  .bubble{position:absolute;font-size:12px;background:rgba(246,241,234,.09);border:1px solid var(--line);padding:7px 11px;border-radius:999px}
   .sample-tag{position:absolute;top:8px;left:10px;font-size:10px;letter-spacing:.22em;color:var(--accent)}
 
-  .faq{margin-top:6px}
-  .faq div{padding:15px 0;border-bottom:1px solid var(--line)}
-  .faq .q{font-size:14px;font-weight:700;letter-spacing:.04em}
-  .faq .a{font-size:12.5px;color:var(--ink-dim);line-height:1.85;margin-top:6px}
+  .faq div{padding:14px 0;border-bottom:1px solid var(--line)}
+  .faq .q{font-size:14px;font-weight:700}
+  .faq .a{font-size:12.5px;color:var(--ink-dim);line-height:1.85;margin-top:5px}
 
-  .cta-final{margin-top:56px;text-align:center;border-top:1px solid var(--ink);padding-top:30px}
-  .cta-final .big{font-family:var(--serif);font-size:25px;letter-spacing:.08em;line-height:1.5}
-  .cta-final .cta-main{max-width:340px;margin:20px auto 0}
-  footer{margin-top:52px;text-align:center;font-size:10.5px;color:var(--ink-dim);line-height:2;letter-spacing:.08em}
-  .script-accent{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:14px}
+  footer{margin-top:48px;text-align:center;font-size:10.5px;color:var(--ink-dim);line-height:2;letter-spacing:.06em}
+
+  /* sticky bottom CTA */
+  .sticky-cta{position:fixed;left:0;right:0;bottom:0;background:rgba(14,11,13,.92);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));backdrop-filter:blur(6px)}
+  .sticky-cta a{display:flex;align-items:center;justify-content:center;max-width:520px;margin:0 auto;background:var(--accent);color:#221016;font-weight:700;font-size:15.5px;min-height:52px;border-radius:3px;text-decoration:none;letter-spacing:.05em}
 </style>
 </head>
 <body>
 <div class="page">
 
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track" id="tickerTrack"></div>
-  </div>
+  <div class="brand-band"><span class="logo">ENAEMA</span><span class="cat">BEAUTY × ROUTINE ― GINZA</span></div>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
 
-  <div class="cat-row"><span>BEAUTY × ROUTINE</span><span>GINZA</span></div>
-  <h1 class="masthead">ENAEMA</h1>
-  <p class="tagline">Make today the best day.</p>
-  <p class="tagline-jp">今日の私を、もっと好きになる。</p>
-  <div class="rule"></div><div class="rule-thin"></div>
+  <!-- FV -->
+  <div class="fv">
+    <img class="icon" src="https://jttfiwlnhxqfercswfvg.supabase.co/storage/v1/object/public/enaema-images/characters/neko/neko_home_main.png" alt="エナエマの猫巫女">
+    <h1>エナエマ</h1>
+    <p class="title">NEKO MIKO ― BEAUTY TASKS</p>
+    <p class="oneline">今日の私を、もっと好きになる。<span class="sub">猫巫女と続ける美容タスク。ケアの順番、もう迷わない。</span></p>
+    <a class="cta-main" href="https://enaema-ruddy.vercel.app">本番エナエマで今日のルーチンを始める →</a>
+    <p class="cta-note">Googleログインで誰でも使えます／ログインなしでも先頭3タスクは開けます</p>
 
-  <div class="hero">
-    <img src="https://jttfiwlnhxqfercswfvg.supabase.co/storage/v1/object/public/enaema-images/characters/neko/neko_home_main.png" alt="エナエマの猫巫女">
-    <span class="vol">ALT. DESIGN</span>
-  </div>
-  <div class="hero-caption"><span>猫巫女と続ける美容タスク</span><span>ケアの順番、もう迷わない</span></div>
-
-  <div class="profile">
-    <img class="icon" src="https://jttfiwlnhxqfercswfvg.supabase.co/storage/v1/object/public/enaema-images/characters/neko/neko_home_main.png" alt="">
-    <div class="who">
-      <p class="name">猫巫女の相棒ページ</p>
-      <p class="role">天気と時間帯で変わる美容タスクを、<br>雑誌をめくるように一緒にこなす相手。</p>
+    <div class="evidence">
+      <div class="eh"><span class="when" id="nowWhen">いまの時間帯のタスク</span><span class="more">本番の今日のセット</span></div>
+      <ul id="nowTasks"></ul>
     </div>
   </div>
-  <a class="cta-main" href="#now">いまの時間帯のルーチンをひらく</a>
-  <p class="cta-note">ログインなしで、先頭の3タスクから始められます</p>
 
-  <section id="now">
-    <div class="sec-head"><span class="no">NOW</span><h2>いまのルーチン</h2><span class="en">TODAY'S TASKS</span></div>
-    <div class="now-box">
-      <p class="when" id="nowWhen">いまの時間帯</p>
-      <p class="title" id="nowTitle">今日も整える。</p>
-      <ul class="tasks" id="nowTasks"></ul>
-    </div>
-    <p class="sec-lead">無料ログインすると、各時間帯のタスクが5つに広がり、タイムラインなどのソーシャル機能もフルで使えます。これは本番アプリの現在の仕様に合わせた表示です。</p>
-  </section>
-
+  <!-- link stack -->
   <section>
-    <div class="sec-head"><span class="no">INDEX</span><h2>今日の目次</h2><span class="en">CONTENTS</span></div>
-    <div class="index-list">
-      <a href="#morning"><span class="no">01</span><span class="ttl">朝</span><span class="dsc">白湯から下地まで<br>一日の土台を作る</span></a>
-      <a href="#noon"><span class="no">02</span><span class="ttl">昼</span><span class="dsc">崩れを直して<br>午後に備える</span></a>
-      <a href="#night"><span class="no">03</span><span class="ttl">晩</span><span class="dsc">一日の汚れを落として<br>回復に入る</span></a>
-      <a href="#beforesleep"><span class="no">04</span><span class="ttl">寝る前</span><span class="dsc">仕上げのケアと<br>明日の服チェック</span></a>
+    <div class="sec-head"><span class="no">INDEX</span><h2>時間帯の積み木</h2><span class="en">LINK STACK</span></div>
+    <div class="stack">
+      <a class="row" href="#morning"><span class="num">01</span><span class="main"><span class="t">朝のルーチン</span><span class="d">白湯／洗顔／化粧水 ― 一日の土台</span></span><span class="chev">›</span></a>
+      <a class="row" href="#noon"><span class="num">02</span><span class="main"><span class="t">昼のルーチン</span><span class="d">皮脂・崩れオフ／あぶらとり・ミスト／リップ直し</span></span><span class="chev">›</span></a>
+      <a class="row" href="#night"><span class="num">03</span><span class="main"><span class="t">晩のルーチン</span><span class="d">クレンジング／洗顔／化粧水 ― 回復に入る</span></span><span class="chev">›</span></a>
+      <a class="row" href="#beforesleep"><span class="num">04</span><span class="main"><span class="t">寝る前のルーチン</span><span class="d">ヘアケア／ハンドクリーム／リップケア</span></span><span class="chev">›</span></a>
+      <a class="row" href="#type"><span class="num">05</span><span class="main"><span class="t">あなたのタイプを選ぶ</span><span class="d">パーソナルカラー／骨格（本番で選択可能）</span></span><span class="chev">›</span></a>
+      <a class="row" href="#live"><span class="num">06</span><span class="main"><span class="t">みんなの気配（サンプル）</span><span class="d">ソーシャル機能はログインでフル表示</span></span><span class="chev">›</span></a>
     </div>
   </section>
 
   <section id="morning">
     <div class="sec-head"><span class="no">01</span><h2>朝のルーチン</h2><span class="en">MORNING</span></div>
-    <ul class="tasks" data-slot="morning"></ul>
+    <div class="stack" data-slot="morning"></div>
   </section>
 
   <section id="noon">
     <div class="sec-head"><span class="no">02</span><h2>昼のルーチン</h2><span class="en">NOON</span></div>
-    <ul class="tasks" data-slot="noon"></ul>
+    <div class="stack" data-slot="noon"></div>
   </section>
 
   <section id="night">
     <div class="sec-head"><span class="no">03</span><h2>晩のルーチン</h2><span class="en">NIGHT</span></div>
-    <ul class="tasks" data-slot="night"></ul>
+    <div class="stack" data-slot="night"></div>
   </section>
 
   <section id="beforesleep">
     <div class="sec-head"><span class="no">04</span><h2>寝る前のルーチン</h2><span class="en">BEFORE SLEEP</span></div>
-    <ul class="tasks" data-slot="beforesleep"></ul>
+    <div class="stack" data-slot="beforesleep"></div>
   </section>
 
-  <section>
-    <div class="sec-head"><span class="no">TYPE</span><h2>あなたのタイプ</h2><span class="en">YOUR TYPE</span></div>
+  <section id="type">
+    <div class="sec-head"><span class="no">05</span><h2>あなたのタイプ</h2><span class="en">YOUR TYPE</span></div>
     <p class="sec-lead">パーソナルカラー・骨格・顔タイプは、本番でログインなしでも選べます。ここでは雛形として、タップで選ぶ感触だけ試せます。</p>
     <div class="chip-group">
       <p class="glabel">パーソナルカラー</p>
@@ -197,8 +175,8 @@
     </div>
   </section>
 
-  <section>
-    <div class="sec-head"><span class="no">LIVE</span><h2>みんなの気配</h2><span class="en">SOCIAL SAMPLE</span></div>
+  <section id="live">
+    <div class="sec-head"><span class="no">06</span><h2>みんなの気配</h2><span class="en">SOCIAL SAMPLE</span></div>
     <p class="sec-lead">同じ時間帯にルーチンをこなす人の投稿が、そっと流れるソーシャル機能。本番ではログインでフル表示、ログインなしではサンプル表示になります。</p>
     <div class="social-strip">
       <span class="sample-tag">SAMPLE</span>
@@ -226,51 +204,51 @@
     </div>
   </section>
 
-  <div class="cta-final">
-    <p class="big">雑誌をめくるように、<br>今日のケアを。</p>
-    <p class="script-accent" style="margin-top:10px">with your shrine cat.</p>
-    <a class="cta-main" href="https://enaema-ruddy.vercel.app">本番エナエマをひらく</a>
-    <p class="cta-note">Googleログインで誰でも使えます</p>
-  </div>
-
   <footer>
     ENAEMA ― 別デザインの雛形サイト（静的ページ）<br>
-    このページはデザインの型を見せるための雛形で、本番アプリではありません。<br>
+    このページは入口の型を見せるための雛形で、本番アプリではありません。<br>
     タスク・仕様の表示は本番エナエマの現在の内容に合わせています。
   </footer>
 
 </div>
 
+<div class="sticky-cta"><a href="https://enaema-ruddy.vercel.app">本番エナエマをひらく</a></div>
+
 <script>
+  var PROD = "https://enaema-ruddy.vercel.app";
   var BASE = "https://jttfiwlnhxqfercswfvg.supabase.co/storage/v1/object/public/enaema-images/characters/neko/reactions/";
   var SLOTS = {
-    morning:    { label: "朝のルーチン", title: "朝のルーチン、今日も整える。", tasks: ["白湯","洗顔","化粧水","乳液","下地・メイク"] },
-    noon:       { label: "昼のルーチン", title: "昼のルーチン、今日も整える。", tasks: ["皮脂・崩れオフ","あぶらとり・ミスト","リップ直し","水分補給","姿勢・軽ストレッチ"] },
-    night:      { label: "晩のルーチン", title: "晩のルーチン、今日も整える。", tasks: ["クレンジング","洗顔","化粧水","美容液","乳液・クリーム"] },
-    beforesleep:{ label: "寝る前のルーチン", title: "寝る前のルーチン、今日も整える。", tasks: ["ヘアケア","ハンドクリーム","リップケア","ストレッチ・深呼吸","翌日の服チェック"] }
+    morning:    { label: "朝", tasks: ["白湯","洗顔","化粧水","乳液","下地・メイク"] },
+    noon:       { label: "昼", tasks: ["皮脂・崩れオフ","あぶらとり・ミスト","リップ直し","水分補給","姿勢・軽ストレッチ"] },
+    night:      { label: "晩", tasks: ["クレンジング","洗顔","化粧水","美容液","乳液・クリーム"] },
+    beforesleep:{ label: "寝る前", tasks: ["ヘアケア","ハンドクリーム","リップケア","ストレッチ・深呼吸","翌日の服チェック"] }
   };
   function pad(n){ return (n < 10 ? "0" : "") + n; }
-  function taskRow(slotKey, name, i){
-    var li = document.createElement("li");
-    var num = document.createElement("span"); num.className = "num"; num.textContent = pad(i + 1); li.appendChild(num);
-    if (i < 3) {
-      var img = document.createElement("img");
-      img.src = BASE + "neko_" + slotKey + "_" + pad(i + 1) + ".png";
-      img.alt = name; img.loading = "lazy";
-      li.appendChild(img);
-    }
-    var t = document.createElement("span"); t.className = "tname"; t.textContent = name; li.appendChild(t);
-    if (i >= 3) {
-      li.className = "locked";
-      var lock = document.createElement("span"); lock.className = "lock"; lock.textContent = "ログインで解放"; li.appendChild(lock);
-    }
-    return li;
-  }
+
+  /* slot sections: every task is a full-width tap row to the production app */
   Object.keys(SLOTS).forEach(function(key){
-    document.querySelectorAll('ul.tasks[data-slot="' + key + '"]').forEach(function(ul){
-      SLOTS[key].tasks.forEach(function(name, i){ ul.appendChild(taskRow(key, name, i)); });
+    var box = document.querySelector('.stack[data-slot="' + key + '"]');
+    if (!box) return;
+    SLOTS[key].tasks.forEach(function(name, i){
+      var a = document.createElement("a");
+      a.className = "row" + (i >= 3 ? " locked" : "");
+      a.href = PROD;
+      var num = document.createElement("span"); num.className = "num"; num.textContent = pad(i + 1); a.appendChild(num);
+      var img = document.createElement("img");
+      img.src = BASE + "neko_" + key + "_" + pad(i + 1) + ".png";
+      img.alt = name; img.loading = "lazy";
+      a.appendChild(img);
+      var main = document.createElement("span"); main.className = "main";
+      var t = document.createElement("span"); t.className = "t"; t.textContent = name; main.appendChild(t);
+      var d = document.createElement("span"); d.className = "d"; d.textContent = i >= 3 ? "無料ログインで解放されます" : "本番でこのタスクを開く"; main.appendChild(d);
+      a.appendChild(main);
+      if (i >= 3) { var lock = document.createElement("span"); lock.className = "lock"; lock.textContent = "LOGIN"; a.appendChild(lock); }
+      else { var ch = document.createElement("span"); ch.className = "chev"; ch.textContent = "›"; a.appendChild(ch); }
+      box.appendChild(a);
     });
   });
+
+  /* FV evidence: current slot's first 3 tasks, directly under the first action */
   function currentSlot(){
     var h = new Date().getHours();
     if (h >= 5 && h < 11) return "morning";
@@ -279,10 +257,18 @@
     return "beforesleep";
   }
   var cur = currentSlot();
-  document.getElementById("nowWhen").textContent = "いまの時間帯 ― " + SLOTS[cur].label;
-  document.getElementById("nowTitle").textContent = SLOTS[cur].title;
+  document.getElementById("nowWhen").textContent = "いまの時間帯 ― " + SLOTS[cur].label + "のタスク";
   var nowUl = document.getElementById("nowTasks");
-  SLOTS[cur].tasks.slice(0, 3).forEach(function(name, i){ nowUl.appendChild(taskRow(cur, name, i)); });
+  SLOTS[cur].tasks.slice(0, 3).forEach(function(name, i){
+    var li = document.createElement("li");
+    var no = document.createElement("span"); no.className = "no"; no.textContent = pad(i + 1); li.appendChild(no);
+    var img = document.createElement("img");
+    img.src = BASE + "neko_" + cur + "_" + pad(i + 1) + ".png";
+    img.alt = name;
+    li.appendChild(img);
+    var tn = document.createElement("span"); tn.className = "tn"; tn.textContent = name; li.appendChild(tn);
+    nowUl.appendChild(li);
+  });
 
   var tick = "GINZA WEATHER <b>天気と服装指数は本番で毎日更新</b> ／ TREND <b>美容・ファッション・グルメ</b> ／ TODAY <b>ケアの順番、もう迷わない</b> ／ ";
   document.getElementById("tickerTrack").innerHTML = tick + tick;
